@@ -59,6 +59,12 @@ toggleMusicButton.addEventListener('click', () => {
     musicPlaying = !musicPlaying; // Status umkehren
 });
 
-// Schneefall automatisch beim Laden starten
+// Musik automatisch abspielen beim Laden der Seite
+window.addEventListener('load', () => {
+    music.play().catch((error) => {
+        console.error('Automatische Musik konnte nicht gestartet werden:', error);
+    });
+});
+
+// Schneefall automatisch starten
 startSnow();
-music.play(); // Musik automatisch starten
