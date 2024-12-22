@@ -9,16 +9,17 @@ let musicPlaying = false; // Variable für Musik aktiv/inaktiv
 
 // Funktion, um Schneeflocken zu generieren
 function createSnowflake() {
-    const snowflake = document.createElement('div');
-    snowflake.classList.add('snowflake');
-    snowflake.style.left = Math.random() * 100 + 'vw';
-    snowflake.style.animationDuration = Math.random() * 3 + 2 + 's';
-    snowflake.innerHTML = '❄️';
-    snowContainer.appendChild(snowflake);
+    const snowflake = document.createElement('div'); // Schneeflocken-Element erstellen
+    snowflake.classList.add('snowflake'); // Klasse hinzufügen
+    snowflake.textContent = '❄️'; // Schneeflocken-Symbol
+    snowflake.style.left = Math.random() * 100 + 'vw'; // Zufällige horizontale Position
+    snowflake.style.animationDuration = Math.random() * 5 + 2 + 's'; // Zufällige Animationsdauer
+    snowflake.style.fontSize = Math.random() * 1.5 + 0.5 + 'rem'; // Unterschiedliche Größen für Schneeflocken
+    snowContainer.appendChild(snowflake); // Schneeflocke ins DOM einfügen
 
     setTimeout(() => {
-        snowflake.remove();
-    }, 5000); // Schneeflocken nach 5 Sekunden entfernen
+        snowflake.remove(); // Schneeflocke nach 5 Sekunden entfernen
+    }, 5000);
 }
 
 // Funktion, um den Schneefall zu starten
