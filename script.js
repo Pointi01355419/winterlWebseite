@@ -5,7 +5,7 @@ const music = document.getElementById('christmas-music');
 
 let snowing = true; // Variable für Schnee aktiv/inaktiv
 let snowInterval; // Variable für den Schneefall-Interval
-let musicPlaying = true; // Variable für Musik aktiv/inaktiv
+let musicPlaying = false; // Variable für Musik aktiv/inaktiv
 
 // Funktion, um Schneeflocken zu generieren
 function createSnowflake() {
@@ -59,12 +59,16 @@ toggleMusicButton.addEventListener('click', () => {
     musicPlaying = !musicPlaying; // Status umkehren
 });
 
-// Musik automatisch abspielen beim Laden der Seite
-window.addEventListener('load', () => {
+// Musik starten bei erster Interaktion
+function enableMusicOnInteraction() {
     music.play().catch((error) => {
-        console.error('Automatische Musik konnte nicht gestartet werden:', error);
+        console.log('Musik konnte nicht automatisch gestartet werden. Warten auf Interaktion.');
     });
-});
+    document.removeEventListener('click', enableMusicOnInteraction); // Event entfernen
+}
+
+// Benutzerinteraktion, um Musik zu starten
+document.addEventListener('click', enableMusicOnInteraction);
 
 // Schneefall automatisch starten
 startSnow();
