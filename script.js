@@ -3,8 +3,9 @@ const toggleSnowButton = document.getElementById('toggle-snow');
 const toggleMusicButton = document.getElementById('toggle-music');
 const music = document.getElementById('christmas-music');
 
-let snowing = true;
-let musicPlaying = true;
+let snowing = true; // Variable für Schnee aktiv/inaktiv
+let snowInterval; // Variable für den Schneefall-Interval
+let musicPlaying = true; // Variable für Musik aktiv/inaktiv
 
 // Funktion, um Schneeflocken zu generieren
 function createSnowflake() {
@@ -17,30 +18,47 @@ function createSnowflake() {
 
     setTimeout(() => {
         snowflake.remove();
-    }, 5000);
+    }, 5000); // Schneeflocken nach 5 Sekunden entfernen
 }
 
-// Schneeflocken-Animation starten
-const snowInterval = setInterval(() => {
-    if (snowing) createSnowflake();
-}, 200);
+// Funktion, um den Schneefall zu starten
+function startSnow() {
+    snowInterval = setInterval(() => {
+        if (snowing) {
+            createSnowflake();
+        }
+    }, 200); // Alle 200ms eine Schneeflocke
+}
 
-// Musik starten
-music.play();
+// Funktion, um den Schneefall zu stoppen
+function stopSnow() {
+    clearInterval(snowInterval);
+}
 
-// Knopf zum Ein-/Ausschalten des Schneefalls
+// Event-Listener für den Schneefall-Button
 toggleSnowButton.addEventListener('click', () => {
-    snowing = !snowing;
-    toggleSnowButton.textContent = snowing ? 'Schnee Anhalten' : 'Schnee Starten';
+    snowing = !snowing; // Zustand umkehren
+    if (snowing) {
+        startSnow();
+        toggleSnowButton.textContent = 'Schnee Anhalten';
+    } else {
+        stopSnow();
+        toggleSnowButton.textContent = 'Schnee Starten';
+    }
 });
 
-// Knopf zum Ein-/Ausschalten der Musik
+// Event-Listener für den Musik-Button
 toggleMusicButton.addEventListener('click', () => {
     if (musicPlaying) {
-        music.pause();
+        music.pause(); // Musik pausieren
+        toggleMusicButton.textContent = 'Musik Starten'; // Buttontext ändern
     } else {
-        music.play();
+        music.play(); // Musik abspielen
+        toggleMusicButton.textContent = 'Musik Anhalten'; // Buttontext ändern
     }
-    musicPlaying = !musicPlaying;
-    toggleMusicButton.textContent = musicPlaying ? 'Musik Anhalten' : 'Musik Starten';
+    musicPlaying = !musicPlaying; // Status umkehren
 });
+
+// Schneefall automatisch beim Laden starten
+startSnow();
+music.play(); // Musik automatisch starten
