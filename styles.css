@@ -67,22 +67,3 @@ p {
 .controls button:hover {
     background: #004d99;
 }
-
-.snowflake {
-    position: fixed;
-    top: -10px;
-    font-size: 1.5rem; /* Größere Schneeflocken für bessere Sichtbarkeit */
-    color: white; /* Schneeflockenfarbe ist Weiß */
-    animation: fall linear infinite;
-    user-select: none;
-    text-shadow: 0 0 5px rgba(255, 255, 255, 0.9); /* Glüheffekt für bessere Sichtbarkeit */
-}
-
-@keyframes fall {
-    0% {
-        transform: translateY(-10px) rotate(0deg);
-    }
-    100% {
-        transform: translateY(100vh) rotate(360deg);
-    }
-}
