@@ -1,0 +1,76 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Arial', sans-serif;
+    background: linear-gradient(to bottom, #003366, #001a33);
+    color: white;
+    overflow: hidden;
+    text-align: center;
+}
+
+.container {
+    position: relative;
+    padding: 50px;
+}
+
+h1 {
+    font-size: 3rem;
+    margin-bottom: 20px;
+    text-shadow: 2px 2px 5px #000;
+}
+
+p {
+    font-size: 1.5rem;
+    margin-bottom: 30px;
+    text-shadow: 1px 1px 3px #000;
+}
+
+.icons {
+    font-size: 2rem;
+    margin-bottom: 30px;
+}
+
+.icon {
+    margin: 0 10px;
+    animation: bounce 2s infinite ease-in-out;
+}
+
+@keyframes bounce {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-15px);
+    }
+}
+
+.controls button {
+    background: #0066cc;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    margin: 10px;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.controls button:hover {
+    background: #004d99;
+}
+
+.snowflake {
+    position: fixed;
+    top: -10px;
+    font-size: 1rem;
+    color: white;
+    animation: fall linear infinite;
+    user-select: none;
+}
+
+@keyframes fall {
+    to {
+        transform: translateY(100vh) rotate(360deg);
+    }
+}
